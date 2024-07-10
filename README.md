@@ -1,0 +1,2 @@
+# LaundryFlow
+Laundry with nextflow
