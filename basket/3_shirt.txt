@@ -1,0 +1,1 @@
+father,red,2,warm,low

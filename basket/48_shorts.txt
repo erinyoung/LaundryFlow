@@ -1,0 +1,1 @@
+mother,sand,2,warm,low

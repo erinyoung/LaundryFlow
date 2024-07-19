@@ -1,0 +1,1 @@
+mother,yellow,4,warm,low

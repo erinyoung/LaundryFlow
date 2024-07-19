@@ -1,0 +1,1 @@
+father,azure,4,warm,low

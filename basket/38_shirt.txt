@@ -1,0 +1,1 @@
+father,white,2,cold,low

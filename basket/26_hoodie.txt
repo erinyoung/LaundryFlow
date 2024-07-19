@@ -1,0 +1,1 @@
+mother,burgundy,5,cold,low
