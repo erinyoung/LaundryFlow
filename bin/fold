@@ -1,11 +1,14 @@
 #!/bin/bash
 
+count=$(ls *.txt | wc -l )
+if [ "$count" -gt 1 ]; then
+  sleep 120s
+fi
+
 for file in *.txt; do
   # Generate the new filename
   new_filename="${file%.txt}_wet.txt"
   
   # Copy the file to the new filename
   cp "$file" "$new_filename"
-
-  sleep 2s
 done
