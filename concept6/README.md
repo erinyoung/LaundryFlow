@@ -19,13 +19,13 @@ In concept 5, we filtered out red clothing, but we do not actually want to filte
 ```groovy
 ch_clothes
   .branch { it ->
-    red: it[0].color != 'red'
+    red: it[0].color == 'red'
     all: true
   }
-  .set { ch_clothes_map }
+  .set { ch_clothes_branch }
 
-ch_clothes_map.red.view{"red $it"}
-ch_clothes_map.all.view{"not red $it"}
+ch_clothes_branch.red.view{"red $it"}
+ch_clothes_branch.all.view{"not red $it"}
 ```
 
 ## Step 2. Collect each channel separatly for washing
@@ -33,9 +33,9 @@ ch_clothes_map.all.view{"not red $it"}
 By the way, these accomplish the same goals
 
 ```groovy
-ch_collected_red_clothes = ch_clothes_map.red.collect()
+ch_collected_red_clothes = ch_clothes_branch.red.collect()
 
-ch_clothes_map.all
+ch_clothes_branch.all
   .collect()
   .set { ch_collected_other_clothes }
 ```
@@ -55,15 +55,15 @@ ch_collected_red_clothes
 ```groovy
 workflow {
     ch_clothes
-        .multiMap { it ->
-            red: it[0].color != 'red'
+        .branch { it ->
+            red: it[0].color == 'red'
             all: true
         }
-        .set { ch_clothes_map }
+        .set { ch_clothes_branch }
 
-    ch_collected_red_clothes = ch_clothes_map.red.collect()
+    ch_collected_red_clothes = ch_clothes_branch.red.collect()
 
-    ch_clothes_map.all
+    ch_clothes_branch.all
         .collect()
         .set { ch_collected_other_clothes }
 
@@ -86,15 +86,15 @@ And if we are cheap, we can combine everything in one load for the dryer.
 ```groovy
 workflow {
     ch_clothes
-        .multiMap { it ->
-            red: it[0].color != 'red'
+        .branch { it ->
+            red: it[0].color == 'red'
             all: true
         }
-        .set { ch_clothes_map }
+        .set { ch_clothes_branch }
 
-    ch_collected_red_clothes = ch_clothes_map.red.collect()
+    ch_collected_red_clothes = ch_clothes_branch.red.collect()
 
-    ch_clothes_map.all
+    ch_clothes_branch.all
         .collect()
         .set { ch_collected_other_clothes }
 
@@ -107,7 +107,6 @@ workflow {
     DRY(WASH.out.clothes.collect())
 }
 ```
-
 
 ## Catching Up
 

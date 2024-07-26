@@ -23,7 +23,7 @@ Channel
             wash_instr:it.wash_instr,
             dry_instr:it.dry_instr
             ]
-        tuple(meta, file(it.name, checkIfExists: true))
+        tuple(meta, file(it.item, checkIfExists: true))
     }
     .set { ch_clothes }
 
@@ -78,14 +78,14 @@ workflow {
             red: it[0].color == 'red'
             all: true
         }
-        .set { ch_clothes_map }
+        .set { ch_clothes_branch }
 
-    //ch_clothes_map.red.view{"red $it"}
-    //ch_clothes_map.all.view{"not red $it"}
+    //ch_clothes_branch.red.view{"red $it"}
+    //ch_clothes_branch.all.view{"not red $it"}
 
-    ch_collected_red_clothes = ch_clothes_map.red.collect()
+    ch_collected_red_clothes = ch_clothes_branch.red.collect()
 
-    ch_clothes_map.all
+    ch_clothes_branch.all
         .collect()
         .set { ch_collected_other_clothes }
 
