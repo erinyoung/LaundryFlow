@@ -7,7 +7,7 @@ fi
 
 for file in *.txt; do
   # Generate the new filename
-  new_filename="${file%.txt}_dry.txt"
+  new_filename="${file%_wet.txt}_dry.txt"
   
   # Copy the file to the new filename
   cp "$file" "$new_filename"
