@@ -1,0 +1,32 @@
+#!/bin/bash
+
+for file in *.txt; do
+  # Generate the new filename
+  new_filename="${file%_dry.txt}_folded.txt"
+  
+  # Copy the file to the new filename
+  cp "$file" "$new_filename"
+done
+
+count=$(ls *_folded.txt | wc -l )
+
+if [ "$count" -gt 1 ]; then
+  nums=''
+  last_file=''
+  type_item=''
+  for file in *dry.txt; do
+    last_file=$file
+    # Get information from filename
+    num_item=$(echo $file | cut -f 1 -d '_')
+    type_item=$(echo $file | cut -f 2 -d '_')
+
+    nums="${nums}${num_item}_" 
+  done
+  # Create new filename
+  new_filename=${nums}${type_item}_folded_all.txt
+  fin_filename=${nums}${type_item}_folded.txt
+  # Create new file
+  cp "$last_file" "$new_filename"
+  rm *folded.txt
+  mv "$new_filename" "$fin_filename"
+fi
