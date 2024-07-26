@@ -23,7 +23,7 @@ Channel
             wash_instr:it.wash_instr,
             dry_instr:it.dry_instr
             ]
-        tuple(meta, file(it.name, checkIfExists: true))
+        tuple(meta, file(it.item, checkIfExists: true))
     }
     .set { ch_clothes }
 
