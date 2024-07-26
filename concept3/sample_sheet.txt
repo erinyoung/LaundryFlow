@@ -1,4 +1,4 @@
-name,person,color,soil,wash_instr,dry_instr
+item,person,color,soil,wash_instr,dry_instr
 basket/1_sock.txt,mother,yellow,4,warm,low
 basket/2_sock.txt,mother,yellow,4,warm,low
 basket/3_shirt.txt,father,red,2,warm,low
