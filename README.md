@@ -14,10 +14,11 @@ Dirty clothes must be
 
 This is a conceptual exersize with a visual dictionary to teach nextflow workflow usage.
 
-
 If only laundry could be as easy as running a Nextflow workflow.
 
 How to use this training:
+
+Each collection of concepts has its own subdirectory and readme. Most concepts build on each other, but can also be skipped if relevant files are copied to the home directory.
 
 - [Concept 1](./concept1/) : main.nf structure and input channel from path
 - [Concept 2](./concept2/) : using channels to connect processes and collect()
@@ -26,12 +27,11 @@ How to use this training:
 - [Concept 5](./concept5/) : filter and functions
 - [Concept 6](./concept6/) : branch and mix
 - [Concept 7](./concept7/) : groupTuple and joinby
-- [Concept 8](./concept8/) : container and conda
-- [Concept 9](./concept9/) : params and config files
+- [Concept 9](./concept8/) : modules, params and config files, containers, and conda
 
 
 Closing thoughts:
-- stubs
-- reports and resource usage
-- with-tower vs seqera platform
+- [stubs](https://www.nextflow.io/docs/latest/process.html#stub) allow testing of channels operations without running each process
+- [reports and resource usage](https://www.nextflow.io/docs/latest/metrics.html)
+- [`-with-tower` vs seqera platform](https://training.nextflow.io/basic_training/seqera_platform/)
 - [requirements](https://nf-co.re/docs/guidelines/pipelines/overview#requirements)
