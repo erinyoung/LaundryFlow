@@ -66,29 +66,18 @@ workflow {
 
     DRY(WASH.out.clothes.collect())
 
-    //DRY.out.clothes.view()
-    //ch_clothes.view()
-
     DRY.out.clothes
-        //.view()
         .flatten()
-        //.view()
         .map{it -> tuple(it.baseName.replace("_dry", ""), it) }
-        //.view{it[0]}
         .set{ ch_dry_clothes }
     
     ch_clothes
-        //.view()
         .map{ it -> tuple(it[1].baseName, it[0])}
-        //.view()
         .set { ch_clothes_metadata }
 
     ch_clothes_metadata
-        //.view{it[1]}
         .join(ch_dry_clothes, by:[0, 0])
-        //.view()
         .map{it -> tuple(it[1], it[2])}
-        //.view()
         .branch { it ->
             pairs: it[1].baseName.contains('mitten') || it[1].baseName.contains('glove') || it[1].baseName.contains('sock')
             other: true
@@ -96,17 +85,12 @@ workflow {
         .set{ ch_separated_dry_clothes }
 
     ch_separated_dry_clothes.pairs
-        //.view()
         .groupTuple(by: 0)
-        //.view()
         .set { ch_separated_grouped_dry_clothes }
 
     ch_separated_grouped_dry_clothes
         .mix(ch_separated_dry_clothes.other)
-        //.view()
         .set {ch_ready_for_folding }
 
     FOLD(ch_ready_for_folding)
-
-
 }
