@@ -1,8 +1,8 @@
 # Second concept
 
 The purpose of this section is to 
-1. connect processes together
-2. channel manipulation : collect
+1. connect processes together via channels
+2. channel operators : collect
 
 ## Step 1.
 The clothes are wet.
