@@ -25,7 +25,7 @@ Channel
             ]
         tuple(meta, file(it.item, checkIfExists: true))
     }
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 
 
 /*
@@ -45,7 +45,7 @@ include { WASH } from './modules/local/wash'
 */
 
 workflow {
-    ch_clothes
+    ch_dirty_clothes
         .branch { it ->
             red: it[0].color == 'red'
             all: true
@@ -71,7 +71,7 @@ workflow {
         .map{it -> tuple(it.baseName.replace("_dry", ""), it) }
         .set{ ch_dry_clothes }
     
-    ch_clothes
+    ch_dirty_clothes
         .map{ it -> tuple(it[1].baseName, it[0])}
         .set { ch_clothes_metadata }
 

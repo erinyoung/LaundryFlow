@@ -45,7 +45,7 @@ Channel
     //.filter{it[0].color != 'red'}
     .filter{filter_clothes(it[0])}
     .view()
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 
 
 /*
@@ -93,7 +93,7 @@ process WASH {
 */
 
 workflow {
-    WASH(ch_clothes.collect())
+    WASH(ch_dirty_clothes.collect())
 
     DRY(WASH.out.clothes)
 }

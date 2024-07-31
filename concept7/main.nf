@@ -25,7 +25,7 @@ Channel
             ]
         tuple(meta, file(it.item, checkIfExists: true))
     }
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 
 
 /*
@@ -88,7 +88,7 @@ process WASH {
 */
 
 workflow {
-    ch_clothes
+    ch_dirty_clothes
         .branch { it ->
             red: it[0].color == 'red'
             all: true
@@ -110,7 +110,7 @@ workflow {
     DRY(WASH.out.clothes.collect())
 
     //DRY.out.clothes.view()
-    //ch_clothes.view()
+    //ch_dirty_clothes.view()
 
     DRY.out.clothes
         //.view()
@@ -120,7 +120,7 @@ workflow {
         //.view{it[0]}
         .set{ ch_dry_clothes }
     
-    ch_clothes
+    ch_dirty_clothes
         //.view()
         .map{ it -> tuple(it[1].baseName, it[0])}
         //.view()
@@ -150,6 +150,5 @@ workflow {
         .set {ch_ready_for_folding }
 
     FOLD(ch_ready_for_folding)
-
 
 }

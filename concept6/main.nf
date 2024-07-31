@@ -25,7 +25,7 @@ Channel
             ]
         tuple(meta, file(it.item, checkIfExists: true))
     }
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 
 
 /*
@@ -73,7 +73,7 @@ process WASH {
 */
 
 workflow {
-    ch_clothes
+    ch_dirty_clothes
         .branch { it ->
             red: it[0].color == 'red'
             all: true
