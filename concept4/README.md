@@ -78,6 +78,62 @@ This should cause a failure, and is the perfect way to discuss nextflow errors.
 
 Also note: on local systems, may not actually stop the process.
 
+
+## Errors
+
+Nextflow errors throw a lot of text that can be confusing. 
+
+```groovy
+ERROR ~ Error executing process > 'WASH (washing clothes)'
+
+Caused by:
+  Process exceeded running time limit (1m)
+
+Command executed:
+
+  wash
+
+Command exit status:
+  -
+
+Command output:
+  (empty)
+
+Work dir:
+  /workspace/LaundryFlow/work/64/bf2fd31838c17e53c5f6818f753ad4
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+
+ -- Check '.nextflow.log' file for details
+```
+
+The error is listed at the top if it is a nextflow error. If it is an error in the process, the error will likely be printed in the `Command output` section. The `Work dir` is the subdirectory that nextflow used when running the files.
+
+Use `ls` to see the contents of the work directory to ensure that the correct files were used as input, created, etc.
+```bash
+# the path to the working directory is generated at runtime and will be a different path for each user and each run
+$ ls /workspace/LaundryFlow/work/64/bf2fd31838c17e53c5f6818f753ad4
+10_sock.txt     19_sock.txt      27_shirt_26.txt  35_jeans.txt     43_glove.txt   5_hat.txt     input.13  input.21  input.3   input.38  input.46  input.9
+11_sock.txt     1_sock.txt       28_leggings.txt  36_jeans.txt     44_socks.txt   6_shirt.txt   input.14  input.22  input.30  input.39  input.47
+12_dress.txt    20_sock.txt      29_scarf.txt     37_dress.txt     45_socks.txt   7_mitten.txt  input.15  input.23  input.31  input.4   input.48
+13_jacket.txt   21_shorts.txt    2_sock.txt       38_shirt.txt     46_hat.txt     8_mitten.txt  input.16  input.24  input.32  input.40  input.49
+14_pants.txt    22_sock.txt      30_hat.txt       39_jeans.txt     47_scarf.txt   9_scarf.txt   input.17  input.25  input.33  input.41  input.5
+15_sweater.txt  23_mittens.txt   31_jacket.txt    3_shirt.txt      48_shorts.txt  input.1       input.18  input.26  input.34  input.42  input.50
+16_skirt.txt    24_swimsuit.txt  32_shirt.txt     40_shirt.txt     49_shorts.txt  input.10      input.19  input.27  input.35  input.43  input.6
+17_shirt.txt    25_swimsuit.txt  33_pants.txt     41_cardigan.txt  4_jeans.txt    input.11      input.2   input.28  input.36  input.44  input.7
+18_shirt.txt    26_hoodie.txt    34_jeans.txt     42_glove.txt     50_shorts.txt  input.12      input.20  input.29  input.37  input.45  input.8
+```
+
+### resume
+
+To rerun a workflow, but not the completed steps, use the `-resume` flag.
+
+
+```bash
+nextflow run . -resume
+```
+
+
 ## Tag
 
 > The tag directive allows you to associate each process execution with a custom label, so that it will be easier to identify them in the log file or in the trace execution report.
