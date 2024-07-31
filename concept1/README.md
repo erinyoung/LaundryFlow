@@ -1,7 +1,7 @@
 # First concept
 
 The purpose of this section is to 
-1. create a nextflow worklow
+1. create a nextflow workflow
 2. read in files into a channel
 3. put those items through a process
 4. save those files somewhere
