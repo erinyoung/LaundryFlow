@@ -32,14 +32,14 @@ The recommended choice for keeping track of metadata in nextflow is via a map. S
 
 This is how the files were being read into a channel.
 ```groovy
-ch_clothes = Channel.fromPath("basket/*")
+ch_dirty_clothes = Channel.fromPath("basket/*")
 ```
 
 This is same thing, just typed differently. 
 ```groovy
 Channel
     .fromPath("basket/*")
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 ```
 
 ### Step 2a. Read in the sample sheet
