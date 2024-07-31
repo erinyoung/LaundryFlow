@@ -25,7 +25,7 @@ Channel
             ]
         tuple(meta, file(it.item, checkIfExists: true))
     }
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 
 
 /*
@@ -73,7 +73,7 @@ process WASH {
 */
 
 workflow {
-    WASH(ch_clothes.collect())
+    WASH(ch_dirty_clothes.collect())
 
     DRY(WASH.out.clothes)
 }
