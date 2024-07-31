@@ -12,7 +12,7 @@
 */
 
 // reading files into a channel
-ch_clothes = Channel.fromPath("basket/*")
+ch_dirty_clothes = Channel.fromPath("basket/*")
 
 
 /*
@@ -60,7 +60,7 @@ process WASH {
 */
 
 workflow {
-    WASH(ch_clothes.collect())
+    WASH(ch_dirty_clothes.collect())
 
     DRY(WASH.out.clothes)
 }
