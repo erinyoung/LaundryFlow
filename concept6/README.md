@@ -1,7 +1,7 @@
 # Sixth concept
 
 The purpose of this section is to 
-1. Introduction to Channel manipulation
+1. Channel operators:
   - branch
   - mix
 
