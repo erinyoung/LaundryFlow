@@ -102,7 +102,7 @@ Channel
             ]
         tuple(meta, file(it.name, checkIfExists: true))
     }
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 ```
 
 Now the workflow comments can be removed.
