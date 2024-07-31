@@ -1,7 +1,8 @@
 # Fifth concept
 
 The purpose of this section is to 
-1. Channel manipulation : filter
+1. Channel operators : filter
+2. Groovy functions
 
 Now another topic of channel manipulation, with a focus on filter. First, we will filter based on a meta value, then we will filter using a custom groovy script.
 
@@ -24,7 +25,7 @@ Channel
             ]
         tuple(meta, file(it.name, checkIfExists: true))
     }
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 ```
 
 Now to filter out all the 'red' items.
@@ -43,7 +44,7 @@ Channel
         tuple(meta, file(it.name, checkIfExists: true))
     }
     .filter{it[0].color != 'red'}
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 ```
 
 This will allow everything not labelled with 'red'.
@@ -83,7 +84,7 @@ Channel
         tuple(meta, file(it.name, checkIfExists: true))
     }
     .filter{filter_clothes(it[0])}
-    .set { ch_clothes }
+    .set { ch_dirty_clothes }
 ```
 
 This will filter out the 'red' and 'denim' colored items.
