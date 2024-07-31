@@ -204,15 +204,110 @@ process WASH {
 ```
 
 
-## Container 
+## container 
 
-Will be covered later.
+> The container directive allows you to execute the process script in a container.
 
-## Variables
+This value defines a container image to use in this process, which is independent from other processes.
 
-Nextflow allows the usage of variables in processes.
+```groovy
+process WASH {
+  container "quay.io/biocontainers/pandas:0.23.4--py36hf8a1672_0"
 
-Variables can be defined at runtime from the inputs and directives to a process.
+  input:
+  file(clothes)
+
+  output:
+  path("*_wet.txt")
+    
+  shell:
+  """
+  wash
+  """
+}
+```
+
+## conda
+
+> The conda directive allows for the definition of the process dependencies using the Conda package manager.
+
+This value defines a conda environment for a process, which is independent from other processes.
+
+```groovy
+process WASH {
+  conda pandas
+
+  input:
+  file(clothes)
+
+  output:
+  path("*_wet.txt")
+    
+  shell:
+  """
+  wash
+  """
+}
+```
+
+## label
+
+> The label directive allows the annotation of processes with mnemonic identifier of your choice.
+
+This can be used to group directives and other metrics together.
+
+```groovy
+process WASH {
+  label "whatever"
+
+  input:
+  file(clothes)
+
+  output:
+  path("*_wet.txt")
+    
+  shell:
+  """
+  wash
+  """
+}
+```
+
+## variables
+
+Nextflow allows the usage of variables in processes. This isn't a directive.
+
+Variables can be defined at runtime from the inputs and directives to a process or in a config file.
+
+```groovy
+process WASH {
+  label "whatever"
+
+  input:
+  file(clothes)
+
+  output:
+  path("*_wet.txt")
+    
+  shell:
+  def args = task.ext.args ?: ''
+  """
+  wash $args
+  """
+}
+```
+
+A breakdown of
+```groovy
+def args = task.ext.args ?: ''
+```
+
+- The variable `args` is used as `$args` in the shell portion of the process.
+- `args` can equal one of two values.
+- If there is a value defined in a config file, then that value is used.
+- If nothing is defined in a config file, then `''` (which is an empty string) is used.
+
+## An example
 
 An example from https://github.com/nf-core/viralrecon/blob/master/modules/nf-core/pangolin/main.nf
 ```groovy
@@ -258,6 +353,7 @@ Please note the usage of:
 - label
 - prefix
 - task.cpus
+- `\\` to split over lines
 - when `$` and `\$` are used
 
 ## Catching Up
