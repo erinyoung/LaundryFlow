@@ -50,12 +50,12 @@ nextflow run other_name.nf
 
 We need a channel for all these files, so add the following line to your `main.nf` file:
 ```groovy
-ch_clothes = Channel.fromPath("basket/*")
+ch_dirty_clothes = Channel.fromPath("basket/*")
 ```
 
 We can see everything in this channel with `.view()`
 ```groovy
-ch_clothes.view()
+ch_dirty_clothes.view()
 ```
 
 <details>
@@ -126,7 +126,7 @@ Launching `main.nf` [condescending_payne] DSL2 - revision: 880a0e3c87
 
 We can add text to view with "{}".
 ```groovy
-ch_clothes.view{"clothing file found: $it"}
+ch_dirty_clothes.view{"clothing file found: $it"}
 ```
 
 <details>
@@ -213,7 +213,7 @@ Workflows can contain and/or use
 For now, let's look at the first element in our channel
 ```groovy
 workflow {
-    ch_clothes.first().view()
+    ch_dirty_clothes.first().view()
 }
 ```
 
