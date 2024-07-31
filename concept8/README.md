@@ -1,12 +1,10 @@
 # Eighth concept
 
-The purpose of this section is to 
-1. inspect the directives of a process
-  - modules
-  - container
-  - conda
-  - params
-  - config file
+The purpose of this section is to
+- Review
+  - container directive
+  - conda directive
+- Introduce params, modules, and config files 
 
 This final concept is to familiarize your workflow with commonly used concepts.
 
@@ -44,7 +42,6 @@ include { WASH } from './modules/local/wash'
 ```
 
 Processes can also be given alias in case they need to be used again (like if you wanted to do a pre-wash).
-
 
 ```groovy
 include { WASH as PREWASH } from './modules/local/wash'
@@ -131,7 +128,7 @@ process {
 
 ### Config files can be linked together
 ```groovy
-includeConfig 'relative/path/to/config'
+includeConfig 'relative/path/to/config/from/this/config'
 ```
 
 ### Profiles 
@@ -187,7 +184,7 @@ profiles {
 ```
 
 
-The file 'nextflow.config' is mostly automatically pulled into the workflow during runtime, but other config files are used with `-c`.
+The file 'nextflow.config' is (mostly) automatically pulled into the workflow during runtime, but other config files are used with `-c`.
 ```bash
 nextflow run . -c config.config 
 ```
