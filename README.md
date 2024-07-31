@@ -27,11 +27,11 @@ Each collection of concepts has its own subdirectory and readme. Most concepts b
 - [Concept 5](./concept5/) : filter and functions
 - [Concept 6](./concept6/) : branch and mix
 - [Concept 7](./concept7/) : groupTuple and joinby
-- [Concept 9](./concept8/) : modules, params and config files, containers, and conda
+- [Concept 9](./concept8/) : modules, params, config files, containers, and conda
 
 
 Closing thoughts:
 - [stubs](https://www.nextflow.io/docs/latest/process.html#stub) allow testing of channels operations without running each process
-- [reports and resource usage](https://www.nextflow.io/docs/latest/metrics.html)
-- [`-with-tower` vs seqera platform](https://training.nextflow.io/basic_training/seqera_platform/)
-- [requirements](https://nf-co.re/docs/guidelines/pipelines/overview#requirements)
+- [reports and resource usage](https://www.nextflow.io/docs/latest/metrics.html) allow better resource management
+- [`-with-tower` vs seqera platform](https://training.nextflow.io/basic_training/seqera_platform/) are less similar than they seem
+- [requirements](https://nf-co.re/docs/guidelines/pipelines/overview#requirements) are recommended usage for compatibility
