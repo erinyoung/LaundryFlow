@@ -2,7 +2,7 @@
 
 count=$(ls *.txt | wc -l )
 if [ "$count" -gt 1 ]; then
-  sleep 90s
+  sleep 10s
 fi
 
 for file in *.txt; do
