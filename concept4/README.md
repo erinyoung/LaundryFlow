@@ -59,7 +59,7 @@ This will count a process as failed if it takes too long.
 Using this directive looks something like this:
 ```groovy
 process WASH {
-  time '1m'
+  time '1s'
 
   input:
   file(clothes)
@@ -87,7 +87,7 @@ Nextflow errors throw a lot of text that can be confusing.
 ERROR ~ Error executing process > 'WASH (washing clothes)'
 
 Caused by:
-  Process exceeded running time limit (1m)
+  Process exceeded running time limit (1s)
 
 Command executed:
 
