@@ -52,6 +52,15 @@ Channel
     .view()
 ```
 
+We can also ensure that this file exists with `checkIfExists`.
+```groovy
+Channel
+    .fromPath("sample_sheet.txt", checkIfExists: true)
+    .view()
+```
+
+
+
 ### Step 2b. Read the sample sheet by line
 There are many functions that manipulate the contents of a channel. This will use `splitCsv`, which will take each line of a text file into a channel.
 
@@ -79,7 +88,7 @@ Channel
             wash_instr:it.wash_instr,
             dry_instr:it.dry_instr
             ]
-        tuple(meta, file(it.name, checkIfExists: true))
+        tuple(meta, file(it.item, checkIfExists: true))
     }
     .view()
 ```
@@ -100,7 +109,7 @@ Channel
             wash_instr:it.wash_instr,
             dry_instr:it.dry_instr
             ]
-        tuple(meta, file(it.name, checkIfExists: true))
+        tuple(meta, file(it.item, checkIfExists: true))
     }
     .set { ch_dirty_clothes }
 ```
