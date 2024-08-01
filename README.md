@@ -27,7 +27,7 @@ Each collection of concepts has its own subdirectory and readme. Most concepts b
 - [Concept 5](./concept5/) : filter and functions
 - [Concept 6](./concept6/) : branch and mix
 - [Concept 7](./concept7/) : groupTuple and joinby
-- [Concept 9](./concept8/) : modules, params, config files, containers, and conda
+- [Concept 8](./concept8/) : modules, params, config files, containers, and conda
 
 
 Closing thoughts:
