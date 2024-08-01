@@ -254,6 +254,15 @@ process WASH {
 }
 ```
 
+## Step 5.
+
+Add the process to the workflow.
+
+```groovy
+workflow {
+    WASH(ch_dirty_clothes)
+}
+```
 
 <details>
   <summary>Click to see output</summary>
@@ -272,7 +281,7 @@ executor >  local (50)
 </details>
 
 
-## Step 5. 
+## Step 6. 
 
 WHERE ARE MY FILES?!?!?!
 
@@ -286,7 +295,7 @@ We, therefore, are going to add our first directive to our WASH process.
 
 First directive: [publishDir](https://www.nextflow.io/docs/latest/process.html#publishdir)
 
-### link
+### Step 6A. link
 
 The following will `link` the files to their final destination
 ```groovy
@@ -306,7 +315,7 @@ process WASH {
 }
 ```
 
-### copy
+### Step 6b. copy
 
 I recommend using `copy` instead (so work can be deleted)
 ```groovy
