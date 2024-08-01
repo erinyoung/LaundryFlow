@@ -79,7 +79,7 @@ workflow {
 
 The washing step runs twice!!!
 
-## Step 5. Collect resuls for washing
+## Step 5. Collect results for washing
 
 And if we are cheap, we can combine everything in one load for the dryer.
 
