@@ -128,6 +128,9 @@ Cached      : 1
 </details>
 
 
+## Both steps of clothes are present
+
+The wet and dry clothes are both copied due to publishDir. This does not actually happen.
 
 ## Catching Up
 
